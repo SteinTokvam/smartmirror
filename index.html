@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+a {
+  color: white;
+}
+
+p{
+  font-family: arial;
+}
+</style>
+<script>
+function startTime() {
+    var today = new Date();
+    var dayNumber = today.getDay() + 1;
+
+    var month = today.getMonth() + 1;
+
+    var year = today.getFullYear();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    month = setMonth(month);
+    var dayText = setDay(dayNumber);
+
+    document.getElementById('date').innerHTML = dayText + " " + dayNumber + ". " + month + " " + year;
+    document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+
+function setDay(day){
+	if(day == 1){day = "Mandag"}
+    else if(day == 2){day = "Tirsdag"}
+    else if(day == 3){day = "Onsdag"}
+    else if(day == 4){day = "Torsdag"}
+    else if(day == 5){day = "Fredag"}
+    else if(day == 6){day = "Lørdag"}
+    else if(day == 7){day = "Søndag"};
+    return day;
+}
+
+function setMonth(month){
+	if(month == 1){month = "Januar"}
+    else if(month == 2){month = "Februar"}
+    else if(month == 3){month = "Mars"}
+    else if(month == 4){month = "April"}
+    else if(month == 5){month = "Mai"}
+    else if(month == 6){month = "Juni"}
+    else if(month == 7){month = "Juli"}
+    else if(month == 8){month = "August"}
+    else if(month == 9){month = "September"}
+    else if(month == 10){month = "Oktober"}
+    else if(month == 11){month = "November"}
+    else if(month == 12){month = "Desember"};
+    return month;
+}
+</script>
+</head>
+
+<body onload="startTime()" style="background-color:black;">
+  <div class="content" style="width:800px; heigth:400px;">
+    <div class="left-content" style="width:400; height:400; margin-bottom:100px; float:left;">
+      <font color="white"><div id="time" style="padding-bottom:20px; font-size:50pt; "> </div></font>
+      <font color="white"><div id="date" style="font-size:20pt; "> </div></font>
+    </div>
+    <div class="bottom" style="width:130px; height: 100px; font-size:15pt; float: right;">
+      <font color="white"><script src="http://www.yr.no/sted/Norge/Oslo/Oslo/Ris_kirke/ekstern_boks_stripe.js"></script>
+      <noscript><a href="http://www.yr.no/sted/Norge/Oslo/Oslo/Ris_kirke/">yr.no: Værvarsel for Ris kirke</a></noscript></font>
+    </div>
+  </div></body>
+</html>
