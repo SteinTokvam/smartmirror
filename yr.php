@@ -51,20 +51,20 @@ $yr_url='https://www.yr.no/sted/Norge/Oslo/Oslo/Ris_kirke';
 
 // 2. Stedsnavnet: Skriv inn navnet på stedet. La stå tom for å falle tilbake til navnet i lenken
 //    Location: The name of the location. Leave empty to fallback to the location in the url.
-$yr_name='Ris Kirke';
+$yr_name='Ris';
 
 // 3. Bruk header og footer: Velg om du vil ha med header og/eller  footer
 //    Use Header and footers: Select to have HTML headers/footers wrapping the content (useful for debugging)
 //PS: Header for HTML dokumentet er XHTML 1.0 Strict
 //    Skrus som regel av når du inlemmer i eksisterende dokument!
 //
-$yr_use_header=$yr_use_footer=true;
+$yr_use_header=$yr_use_footer=false;
 
 // 4. Deler: Velg delene av varselet du vil ta med!
 //    Parts: Choose which parts of the forecast to include
-$yr_use_banner=true; //yr.no Banner
+$yr_use_banner=false; //yr.no Banner
 $yr_use_text=false;   //Tekstvarsel
-$yr_use_links=true;  //Lenker til varsel på yr.no
+$yr_use_links=false;  //Lenker til varsel på yr.no
 $yr_use_table=true;  //Tabellen med varselet
 
 // 5. Mellomlagringstid: Antall sekunder før nytt varsel hentes fra yr.no.
@@ -106,7 +106,7 @@ $yr_link_target='_top';
 //    Show errors: Useful while debugging.
 //
 //greit ved feilsøking, men bør ikke være aktivert i drift.
-$yr_vis_php_feilmeldinger=true;
+$yr_vis_php_feilmeldinger=false;
 
 
 
