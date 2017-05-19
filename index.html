@@ -14,6 +14,7 @@ p{
 function startTime() {
     var today = new Date();
     var dayNumber = today.getDay();
+    var date = today.getDate();
 
     var month = today.getMonth() + 1;
 
@@ -26,7 +27,7 @@ function startTime() {
     month = setMonth(month);
     var dayText = setDay(dayNumber);
 
-    document.getElementById('date').innerHTML = dayText + " " + dayNumber + ". " + month + " " + year;
+    document.getElementById('date').innerHTML = dayText + " " + date + ". " + month + " " + year;
     document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
     var t = setTimeout(startTime, 500);
 }
