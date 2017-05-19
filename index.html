@@ -28,9 +28,6 @@ function startTime() {
     var h = today.getHours();
     var m = today.getMinutes();
     var s = today.getSeconds();
-    if(s == 0 && m == 0){//skifte quote 1 gang i timen
-      quote();
-    }
     m = checkTime(m);
     s = checkTime(s);
     month = setMonth(month);
@@ -94,6 +91,7 @@ function quote(){
   // use your own text file names here:
   var quotes = textFileToArray("quote.txt");
   document.getElementById('quote').innerHTML = quotes[rand];
+  var t = setTimeout(quote, 60000 * 60);//skifte quote 1 gang i timen
 }
 
 </script>
