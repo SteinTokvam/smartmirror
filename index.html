@@ -11,6 +11,12 @@ p{
 }
 </style>
 <script>
+
+function start(){
+  startTime();
+  quote();
+}
+
 function startTime() {
     var today = new Date();
     var dayNumber = today.getDay();
@@ -31,14 +37,11 @@ function startTime() {
     document.getElementById('date').innerHTML = dayText + " " + date + ". " + month + " " + year;
     document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
 
-    // use your own text file names here:
-    var quotes = textFileToArray("quote.txt");
-    document.getElementById('quote').innerHTML = quotes[0];
     var t = setTimeout(startTime, 500);
 }
 
 function getRandom(){
-  return Math.floor((Math.random() * 103) + 1);
+  return Math.floor((Math.random() * 103) +1);
 }
 
 function checkTime(i) {
@@ -83,10 +86,18 @@ function textFileToArray( filename )
     return reader.responseText.split(/(\r\n|\n)/g);
 }
 
+function quote(){
+  var rand = getRandom();
+
+  // use your own text file names here:
+  var quotes = textFileToArray("quote.txt");
+  document.getElementById('quote').innerHTML = quotes[26] + " " + rand;
+}
+
 </script>
 </head>
 
-<body onload="startTime()" style="background-color:black;">
+<body onload="start()" style="background-color:black;">
   <div class="content" style="width:800px; heigth:400px; border-style:solid; margin-bottom:270px;border-width:5px;border-color:red;">
     <div class="left-content" style="width:400; height:400; ">
       <font color="white"><div id="time" style="padding-bottom:20px; font-size:50pt; "> </div></font>
@@ -97,6 +108,6 @@ function textFileToArray( filename )
       <noscript><a href="http://www.yr.no/sted/Norge/Oslo/Oslo/Ris_kirke/">yr.no: Værvarsel for Ris kirke</a></noscript></font>
     </div>
   </div>
-  <div class="bottom" style="width:800px; height:30px;"><font color="white"><div id="quote" style="font-size:15pt; "> </div></font></div>
+  <div class="bottom" onload="quote()" style="width:800px; height:30px;"><font color="white"><div id="quote" style="font-size:15pt; "> </div></font></div>
 </body>
 </html>
