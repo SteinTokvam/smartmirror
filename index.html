@@ -28,7 +28,9 @@ function startTime() {
     var h = today.getHours();
     var m = today.getMinutes();
     var s = today.getSeconds();
-
+    if(s == 0 && m == 0){//skifte quote 1 gang i timen
+      quote();
+    }
     m = checkTime(m);
     s = checkTime(s);
     month = setMonth(month);
@@ -91,19 +93,19 @@ function quote(){
 
   // use your own text file names here:
   var quotes = textFileToArray("quote.txt");
-  document.getElementById('quote').innerHTML = quotes[26] + " " + rand;
+  document.getElementById('quote').innerHTML = quotes[rand];
 }
 
 </script>
 </head>
 
 <body onload="start()" style="background-color:black;">
-  <div class="content" style="width:800px; heigth:400px; border-style:solid; margin-bottom:250px;border-width:5px;border-color:red;">
+  <div class="content" style="width:800px; heigth:400px; margin-bottom:250px;">
     <div class="left-content" style="width:400; height:400; ">
       <font color="white"><div id="time" style="padding-bottom:20px; font-size:50pt; "> </div></font>
       <font color="white"><div id="date" style="font-size:20pt; "> </div></font>
     </div>
-    <div class="weather" style="width:130px; height: 200px; font-size:15pt; float:right; margin-top:-150px; margin-right:50px; border-style:solid; border-width:5px;border-color:green;">
+    <div class="weather" style="width:130px; height: 200px; font-size:15pt; float:right; margin-top:-150px; margin-right:50px;">
       <font color="white"><script src="http://www.yr.no/sted/Norge/Oslo/Oslo/Ris_kirke/ekstern_boks_stripe.js"></script>
       <noscript><a href="http://www.yr.no/sted/Norge/Oslo/Oslo/Ris_kirke/">yr.no: Værvarsel for Ris kirke</a></noscript></font>
     </div>
