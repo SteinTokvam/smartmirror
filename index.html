@@ -22,6 +22,7 @@ function startTime() {
     var h = today.getHours();
     var m = today.getMinutes();
     var s = today.getSeconds();
+
     m = checkTime(m);
     s = checkTime(s);
     month = setMonth(month);
@@ -29,8 +30,17 @@ function startTime() {
 
     document.getElementById('date').innerHTML = dayText + " " + date + ". " + month + " " + year;
     document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
+
+    // use your own text file names here:
+    var quotes = textFileToArray("quote.txt");
+    document.getElementById('quote').innerHTML = quotes[0];
     var t = setTimeout(startTime, 500);
 }
+
+function getRandom(){
+  return Math.floor((Math.random() * 103) + 1);
+}
+
 function checkTime(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
     return i;
@@ -62,18 +72,30 @@ function setMonth(month){
     else if(month == 12){month = "Desember"};
     return month;
 }
+
+function textFileToArray( filename )
+{
+    var reader = (window.XMLHttpRequest != null )
+               ? new XMLHttpRequest()
+               : new ActiveXObject("Microsoft.XMLHTTP");
+    reader.open("GET", filename, false );
+    reader.send( );
+    return reader.responseText.split(/(\r\n|\n)/g);
+}
+
 </script>
 </head>
 
 <body onload="startTime()" style="background-color:black;">
   <div class="content" style="width:800px; heigth:400px;">
-    <div class="left-content" style="width:400; height:400; margin-bottom:100px; float:left;">
+    <div class="left-content" style="width:400; height:400; margin-bottom:100px; margin-right:100px; float:left;">
       <font color="white"><div id="time" style="padding-bottom:20px; font-size:50pt; "> </div></font>
       <font color="white"><div id="date" style="font-size:20pt; "> </div></font>
     </div>
-    <div class="bottom" style="width:130px; height: 100px; font-size:15pt; ">
+    <div class="weather" style="width:130px; height: 100px; font-size:15pt; float:right;">
       <font color="white"><script src="http://www.yr.no/sted/Norge/Oslo/Oslo/Ris_kirke/ekstern_boks_stripe.js"></script>
       <noscript><a href="http://www.yr.no/sted/Norge/Oslo/Oslo/Ris_kirke/">yr.no: Værvarsel for Ris kirke</a></noscript></font>
     </div>
+    <div class="bottom" style="width:800px; height:30px;"><font color="white"><div id="quote" style="font-size:15pt; "> </div></font></div>
   </div></body>
 </html>
