@@ -14,6 +14,7 @@ p{
 
 function start(){
   startTime();
+  quote();
   handleClientLoad();
 }
 
@@ -55,7 +56,7 @@ function setDay(day){
     else if(day == 4){day = "Torsdag"}
     else if(day == 5){day = "Fredag"}
     else if(day == 6){day = "L&#248;rdag"}
-    else if(day == 0){day = "S&#248;ndag"};
+    else if(day == 7){day = "S&#248;ndag"};
     return day;
 }
 
@@ -85,6 +86,15 @@ function textFileToArray( filename )
     return reader.responseText.split(/(\r\n|\n)/g);
 }
 
+function quote(){
+  var rand = getRandom();
+
+  // use your own text file names here:
+  var quotes = textFileToArray("quote.txt");
+  document.getElementById('quote').innerHTML = quotes[rand];
+  var t = setTimeout(quote, 60000 * 60);//skifte quote 1 gang i timen
+}
+
 </script>
 </head>
 
@@ -97,8 +107,8 @@ function textFileToArray( filename )
     <div class="weather" style="width:130px; height: 200px; font-size:15pt; float:right; margin-top:-150px; margin-right:50px;">
       <font color="white"><script src="http://www.yr.no/sted/Norge/Oslo/Oslo/Ris_kirke/ekstern_boks_stripe.js"></script><noscript><a href="http://www.yr.no/sted/Norge/Oslo/Oslo/Ris_kirke/">yr.no: Værvarsel for Ris kirke</a></noscript></font>
     </div>
-    <iframe src='https://ruter.no/iframe-realtime.html#(3012330)Slemdal%20%5BT-bane%5D%20(Oslo)%7C1,Helsfyr' allowTransparency='true' frameborder='0' scrolling='no' height='354' width='200'></iframe>
-    <iframe src='https://ruter.no/iframe-realtime.html#(3012335)Stasjonsveien%20(Oslo)%7C46,Majorstuen' allowTransparency='true' frameborder='0' scrolling='no' height='354' width='200'></iframe>
+
   </div>
+  <div class="bottom" onload="quote()" style="width:770px; height:30px; text-align: center;"><font color="white"><div id="quote" style="font-size:15pt; "> </div></font></div>
 </body>
 </html>

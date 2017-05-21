@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+  <script>
+
+  var xhr = new XMLHttpRequest();
+  var station_id = 3012330;
+  var stasjonsveien = 3012335;
+  xhr.open("GET", "http://reisapi.ruter.no/Place/GetStop/" + station_id, false);
+  xhr.send();
+  //document.write(xhr.status + "<br>");
+  //document.write(xhr.responseText);
+  xhr.open("GET", "http://reisapi.ruter.no/StopVisit/GetDepartures/" + station_id, false);
+  xhr.send();
+  document.write(xhr.status + "<br>");
+  var responseToGET = xhr.responseText;
+  responseToGET = responseToGET.split(",");
+  document.write(responseToGET.length);
+  document.write(responseToGET[0]);//når dataen blir hentet fra ruter
+  printAll(responseToGET);
+
+  //document.write(responseToGET[7]);
+
+  function printAll(responseToGET){
+    for(i = 0; i < responseToGET.length; i ++){
+      if(responseToGET[i] == "\"DirectionName\":\"1\""){//hvilken retning kollektiven går.. 1=sentrum, 2=andre veien
+        document.write(responseToGET[i]);//printer retningen
+
+        document.write(responseToGET[i+19]);//printer planlagt ankomst
+        document.write(responseToGET[i+20]);//printer forventet ankomst..sanntid
+
+        //break;
+      }
+    }
+  }
+  </script>
+  </p>
+
+
+</body>
+</html>
