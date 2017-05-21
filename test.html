@@ -26,14 +26,18 @@
   //document.write(responseToGET[7]);
 
   function printAll(responseToGET){
+    var maxResults = 2;
+    var currResults = 0;
     for(i = 0; i < responseToGET.length; i ++){
       if(responseToGET[i] == "\"DirectionName\":\"1\""){//hvilken retning kollektiven går.. 1=sentrum, 2=andre veien
+        currResults++;
         document.write(responseToGET[i]);//printer retningen
 
         document.write(responseToGET[i+19]);//printer planlagt ankomst
         document.write(responseToGET[i+20]);//printer forventet ankomst..sanntid
-
-        //break;
+        if(currResults == maxResults){
+          break;
+        }
       }
     }
   }
