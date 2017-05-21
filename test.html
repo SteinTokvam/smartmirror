@@ -14,7 +14,7 @@
   xhr.send();
   //document.write(xhr.status + "<br>");
   //document.write(xhr.responseText);
-  xhr.open("GET", "http://reisapi.ruter.no/StopVisit/GetDepartures/" + station_id, false);
+  xhr.open("GET", "http://reisapi.ruter.no/StopVisit/GetDepartures/" + stasjonsveien, false);
   xhr.send();
   document.write(xhr.status + "<br>");
   var responseToGET = xhr.responseText;
@@ -32,6 +32,7 @@
       if(responseToGET[i] == "\"DirectionName\":\"1\""){//hvilken retning kollektiven går.. 1=sentrum, 2=andre veien
         currResults++;
         document.write(responseToGET[i]);//printer retningen
+        document.write(responseToGET[i-1]);//printer linjenr
 
         document.write(responseToGET[i+19]);//printer planlagt ankomst
         document.write(responseToGET[i+20]);//printer forventet ankomst..sanntid
