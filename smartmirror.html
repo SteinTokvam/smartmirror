@@ -161,7 +161,7 @@ function printAll(responseToGET){
       var second = minute[2];
       minute = 22;
       //minute = minute[1];
-      document.write("clock: " + minutes + ":" + seconds + " - - " + minute + ":" + second);
+      //document.write("clock: " + minutes + ":" + seconds + " - - " + minute + ":" + second);
       var secondCalc = second - seconds;
       var waitUntilRuter = minute - minutes;
       if(secondCalc>29){
@@ -169,8 +169,9 @@ function printAll(responseToGET){
       }
       if(secondCalc<40 && minute == 1){
         waitUntilRuter = "nå!";
+        //denne delen fungerer ikke, men ellers så er den der..kommenter frem igjen document.write
       }
-      document.write("ruter:   " + waitUntilRuter);
+    //  document.write("ruter:   " + waitUntilRuter);
       document.getElementById(id[2]).innerHTML = timeExpectedArrival[0];
       changeID(1);
       if(currResults == maxResults){
