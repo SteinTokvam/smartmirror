@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>SmartMirror</title>
 <style>
 a {
   color: white;
@@ -105,6 +106,7 @@ function sendRequest(){
   xhr.send();
 
   var responseToGET = xhr.responseText;
+  document.write(responseToGET);
   responseToGET = responseToGET.split(",");
 
   printAll(responseToGET);
