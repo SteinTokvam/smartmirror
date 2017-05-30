@@ -106,9 +106,8 @@ function sendRequest(){
   xhr.send();
 
   var responseToGET = xhr.responseText;
-  document.write(responseToGET);
+  //document.write(responseToGET);
   responseToGET = responseToGET.split(",");
-
   printAll(responseToGET);
 }
 
