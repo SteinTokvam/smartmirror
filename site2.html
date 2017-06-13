@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+  <title>site2</title>
+  <script>
+
+  function start(){
+    var res = " ";
+    var together = "";
+
+    res = textFileReader("newfil.txt");
+    for(i = 0; i<res.length-1;i++){
+      together += res[i];
+    }
+    document.write(together);
+    if(together == "1"){
+      window.location.href = "site1.html";
+    }
+    setTimeout(start, 2000);
+  }
+
+  function textFileReader( filename )
+  {
+      var reader = (window.XMLHttpRequest != null )
+                 ? new XMLHttpRequest()
+                 : new ActiveXObject("Microsoft.XMLHTTP");
+      reader.open("GET", filename, false );
+      reader.send( );
+      return reader.responseText;
+  }
+  </script>
+</head>
+<body onload="start()">
+<p>site1</p>
+</body>
+</html>
