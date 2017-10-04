@@ -8,11 +8,8 @@
     var together = "";
 
     res = textFileReader("newfil.txt");
-    for(i = 0; i<res.length-1;i++){
-      together += res[i];
-    }
-    document.write(together);
-    if(together == "1"){
+    
+    if(res == "1"){
       window.location.href = "site1.html";
     }
     setTimeout(start, 2000);
@@ -30,6 +27,6 @@
   </script>
 </head>
 <body onload="start()">
-<p>site1</p>
+<p>site2</p>
 </body>
 </html>

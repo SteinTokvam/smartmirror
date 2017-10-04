@@ -8,11 +8,8 @@
     var together = "";
 
     res = textFileReader("newfil.txt");
-    for(i = 0; i<res.length-1;i++){
-      together += res[i];
-    }
-    document.write(together);
-    if(together == "2"){
+
+    if(res == "2"){
       window.location.href = "site2.html";
     }
     setTimeout(start, 2000);
@@ -25,6 +22,7 @@
                  : new ActiveXObject("Microsoft.XMLHTTP");
       reader.open("GET", filename, false );
       reader.send( );
+//document.write("Test: " + reader.responseText);
       return reader.responseText;
   }
   </script>

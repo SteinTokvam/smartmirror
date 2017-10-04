@@ -17,7 +17,29 @@ p{
 function start(){
   startFetching();
   startTime();
+  startSiteSwitch();
 }
+
+function startSiteSwitch(){
+    var res = " ";
+    var together = "";
+
+    res = textFileReader("newfil.txt");
+    if(res == "2"){
+      window.location.href = "slider.html";
+    }
+    setTimeout(startSiteSwitch, 2000);
+  }
+
+  function textFileReader( filename )
+  {
+      var reader = (window.XMLHttpRequest != null )
+                 ? new XMLHttpRequest()
+                 : new ActiveXObject("Microsoft.XMLHTTP");
+      reader.open("GET", filename, false );
+      reader.send( );
+      return reader.responseText;
+  }
 
 function startTime() {
     var today = new Date();
