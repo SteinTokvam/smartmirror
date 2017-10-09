@@ -1,51 +1,60 @@
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-a {
-  color: white;
-}
-
-p{
-  font-family: arial;
-}
-</style>
-<script>
 
 function start(){
+  startFetching();
   startTime();
-  quote();
-  handleClientLoad();
+  startSiteSwitch();
 }
 
+function startSiteSwitch(){
+    var res = " ";
+    var together = "";
+
+    res = textFileReader("newfil.txt");
+    if(res == "2"){
+      window.location.href = "slider.html";
+    }
+    setTimeout(startSiteSwitch, 2000);
+  }
+
+  function textFileReader( filename )
+  {
+      var reader = (window.XMLHttpRequest != null )
+                 ? new XMLHttpRequest()
+                 : new ActiveXObject("Microsoft.XMLHTTP");
+      reader.open("GET", filename, false );
+      reader.send( );
+      return reader.responseText;
+  }
+
 function startTime() {
+    //starter å hente datoen og formatere informasjonen til visning
     var today = new Date();
+
     var dayNumber = today.getDay();
     var date = today.getDate();
-
     var month = today.getMonth() + 1;
-
     var year = today.getFullYear();
+
     var h = today.getHours();
     var m = today.getMinutes();
     var s = today.getSeconds();
+
+    h = checkTime(h);
     m = checkTime(m);
     s = checkTime(s);
+
     month = setMonth(month);
     var dayText = setDay(dayNumber);
 
+    //Viser tid/dato på siden
     document.getElementById('date').innerHTML = dayText + " " + date + ". " + month + " " + year;
     document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
 
     var t = setTimeout(startTime, 500);
 }
 
-function getRandom(){
-  return Math.floor((Math.random() * 103) +1);
-}
-
 function checkTime(i) {
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    if (i < 10) {i = "0" + i};
     return i;
 }
 
@@ -56,7 +65,7 @@ function setDay(day){
     else if(day == 4){day = "Torsdag"}
     else if(day == 5){day = "Fredag"}
     else if(day == 6){day = "L&#248;rdag"}
-    else if(day == 7){day = "S&#248;ndag"};
+    else if(day == 0){day = "S&#248;ndag"};
     return day;
 }
 
@@ -85,30 +94,3 @@ function textFileToArray( filename )
     reader.send( );
     return reader.responseText.split(/(\r\n|\n)/g);
 }
-
-function quote(){
-  var rand = getRandom();
-
-  // use your own text file names here:
-  var quotes = textFileToArray("quote.txt");
-  document.getElementById('quote').innerHTML = quotes[rand];
-  var t = setTimeout(quote, 60000 * 60);//skifte quote 1 gang i timen
-}
-
-</script>
-</head>
-
-<body onload="start()" style="background-color:black;">
-  <div class="content" style="width:800px; heigth:400px; margin-bottom:250px;">
-    <div class="left-content" style="width:400; height:400; ">
-      <font color="white"><div id="time" style="padding-bottom:20px; font-size:50pt; "> </div></font>
-      <font color="white"><div id="date" style="font-size:20pt; "> </div></font>
-    </div>
-    <div class="weather" style="width:130px; height: 200px; font-size:15pt; float:right; margin-top:-150px; margin-right:50px;">
-      <font color="white"><script src="http://www.yr.no/sted/Norge/Oslo/Oslo/Ris_kirke/ekstern_boks_stripe.js"></script><noscript><a href="http://www.yr.no/sted/Norge/Oslo/Oslo/Ris_kirke/">yr.no: Værvarsel for Ris kirke</a></noscript></font>
-    </div>
-
-  </div>
-  <div class="bottom" onload="quote()" style="width:770px; height:30px; text-align: center;"><font color="white"><div id="quote" style="font-size:15pt; "> </div></font></div>
-</body>
-</html>
