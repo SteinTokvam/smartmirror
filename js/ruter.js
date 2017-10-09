@@ -52,7 +52,7 @@ function printAll(responseToGET){
   var currResults = 0;
 
   changeID(0);
-  if(responseToGET.length == 0){
+  if(responseToGET.length == 0){//om siste avgang er gått.. denne og else er ny
       document.getElementById(id[1]).innerHTML = "Siste avgang har gått."
   }else{
       for(i = 0; i < responseToGET.length; i ++){
