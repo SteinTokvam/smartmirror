@@ -52,37 +52,41 @@ function printAll(responseToGET){
   var currResults = 0;
 
   changeID(0);
-  for(i = 0; i < responseToGET.length; i ++){
-    if(responseToGET[i] == "\"DirectionName\":\"1\""){//hvilken retning kollektiven går.. 1=sentrum, 2=andre veien
-      currResults++;
+  if(responseToGET.length == 0){
+      document.getElementById(id[1]).innerHTML = "Siste avgang har gått."
+  }else{
+      for(i = 0; i < responseToGET.length; i ++){
+        if(responseToGET[i] == "\"DirectionName\":\"1\""){//hvilken retning kollektiven går.. 1=sentrum, 2=andre veien
+          currResults++;
 
-      var linjenr = responseToGET[i-1].split(":");
+          var linjenr = responseToGET[i-1].split(":");
 
-      var linjeTall = parseInt(linjenr[1].charAt(1) + linjenr[1].charAt(2));
-      //document.getElementById(id[0]).innerHTML = busOrMetro + linjeTall;//busOrMetro==variabel for å lagre buss og bane nummer
+          var linjeTall = parseInt(linjenr[1].charAt(1) + linjenr[1].charAt(2));
+          //document.getElementById(id[0]).innerHTML = busOrMetro + linjeTall;//busOrMetro==variabel for å lagre buss og bane nummer
 
-      var aimedArrival = responseToGET[i+19].split("T");
-      var timeAimedArrival = aimedArrival[2].split("+");
+          var aimedArrival = responseToGET[i+19].split("T");
+          var timeAimedArrival = aimedArrival[2].split("+");
 
-      document.getElementById(id[1]).innerHTML = timeAimedArrival[0];
+          document.getElementById(id[1]).innerHTML = timeAimedArrival[0];
 
-      var expectedArrival = responseToGET[i+20].split("T");
-      var timeExpectedArrival = expectedArrival[2].split("+");
+          var expectedArrival = responseToGET[i+20].split("T");
+          var timeExpectedArrival = expectedArrival[2].split("+");
 
-      document.getElementById(id[2]).innerHTML = timeExpectedArrival[0];
+          document.getElementById(id[2]).innerHTML = timeExpectedArrival[0];
 
-      changeID(1);
+          changeID(1);
 
-      if(currResults == maxResults){
-        if(station_id == stasjonsveien){
-          station_id = slemdal;
-          break;
+          if(currResults == maxResults){
+            if(station_id == stasjonsveien){
+              station_id = slemdal;
+              break;
+            }
+            station_id = stasjonsveien;
+
+            sendRequest();
+            break;
+          }
         }
-        station_id = stasjonsveien;
-
-        sendRequest();
-        break;
       }
-    }
   }
 }
