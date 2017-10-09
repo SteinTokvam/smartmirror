@@ -173,7 +173,7 @@ function printAll(responseToGET){
       var linjenr = responseToGET[i-1].split(":");
 
       var linjeTall = parseInt(linjenr[1].charAt(1) + linjenr[1].charAt(2));
-      document.getElementById(id[0]).innerHTML = busOrMetro + linjeTall;
+      //document.getElementById(id[0]).innerHTML = busOrMetro + linjeTall;
 
       var aimedArrival = responseToGET[i+19].split("T");
       var timeAimedArrival = aimedArrival[2].split("+");
@@ -229,7 +229,7 @@ function printAll(responseToGET){
       <font color="white">
         <table style="width:100%">
           <tr>
-            <th id="line">Siste avgang har gått.</th>
+            <th id="line"><img src="img/bane.png" style="height:20px;"/></th>
             <th>Planlagt</th>
             <th>Sanntid</th>
           </tr>
@@ -245,7 +245,7 @@ function printAll(responseToGET){
           </tr>
 
             <tr>
-              <th id="46line"></th>
+              <th id="46line"><img src="img/buss.png" style="height:17px;"/></th>
               <th></th>
               <th></th>
             </tr>
