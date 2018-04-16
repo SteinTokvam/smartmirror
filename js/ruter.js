@@ -19,6 +19,7 @@ function sendRequest(){
   var responseToGET = xhr.responseText;
   //document.write(responseToGET);//printer all informasjon fra ruter for testing
   responseToGET = responseToGET.split(",");
+  responseToGET = "";
   printAll(responseToGET);
 }
 
