@@ -17,6 +17,9 @@ function sendRequest(){
 
   var responseToGET = xhr.responseText;
   //document.write(responseToGET);//printer all informasjon fra ruter for testing
+  if(responseToGET.length < 10){
+
+  }
   responseToGET = responseToGET.split(",");
   printAll(responseToGET);
 }
@@ -49,6 +52,10 @@ function printAll(responseToGET){
   var currResults = 0;
 
   changeID(0);
+  if(responseToGET.length<10){
+      document.getElementById(id[1]).innerHTML = "siste avgang har gått";
+      return;
+  }
 
   for(i = 0; i < responseToGET.length; i ++){
     if(responseToGET[i] == "\"DirectionName\":\"1\""){//hvilken retning kollektiven går.. 1=sentrum, 2=andre veien
