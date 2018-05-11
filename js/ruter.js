@@ -52,7 +52,7 @@ function printAll(responseToGET){
   var currResults = 0;
 
   changeID(0);
-  if(responseToGET.length<10){
+  if(responseToGET.length<10){//Om resultatet er kort så er det ikke igjen noen avganger da ruter git masse info
       document.getElementById(id[1]).innerHTML = "siste avgang har gått";
       return;
   }
