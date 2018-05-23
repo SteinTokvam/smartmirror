@@ -15,20 +15,18 @@ function startTime() {
 
     var h = date.getHours();
     var m = date.getMinutes();
-    var s = date.getSeconds();
 
     h = checkTime(h);
     m = checkTime(m);
-    s = checkTime(s);
 
     month = setMonth(month);
     var dayText = setDay(dayNumber);
 
     //Viser tid/dato på siden
     document.getElementById('date').innerHTML = dayText + " " + day + ". " + month + " " + year;
-    document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
+    document.getElementById('time').innerHTML = h + ":" + m;
 
-    var t = setTimeout(startTime, 500);
+    var t = setTimeout(startTime, 30000);
 }
 
 function checkTime(i) {
